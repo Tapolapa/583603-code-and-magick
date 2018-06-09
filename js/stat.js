@@ -7,7 +7,6 @@ var COLUMN_HEIGHT = 150;
 var COLUMN_WIDTH = 40;
 var COLUMN_SPACE = 50;
 var GAP = 10;
-var acolors = ['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.3)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,0.7)', 'rgba(0,0,0,0.9)'];
 var renderCloud = function (ctx, x, y) {
   ctx.beginPath();
   ctx.moveTo(x, y);
@@ -25,23 +24,26 @@ var renderCloud = function (ctx, x, y) {
 };
 var getMaxElement = function (times) {
   var maxElement = times[0];
-  for (var i = 0; i < times.length; i++) {
+  for (var i = 1; i < times.length; i++) {
     if (times[i] > maxElement) {
       maxElement = times[i];
     }
   }
   return maxElement;
 };
-var mdrawRect = function (ctx, v, n, t, p) {
-  var x = CLOUD_X + COLUMN_SPACE + (COLUMN_WIDTH * n) + (COLUMN_SPACE * n);
-  var y = CLOUD_Y + CLOUD_HEIGHT - (GAP * 4 + v);
-  var h = v;
-  var w = COLUMN_WIDTH;
-  ctx.fillRect(x, y, w, h);
+var getRandomColor = function () {
+  var randomColor = 'rgba(0, 0, 255, INTENSIVE)';
+  var randomValue = Math.random() * (1 - 0.3) + 0.3;
+  return randomColor.replace('INTENSIVE', randomValue);
+};
+var mdrawRect = function (ctx, playerColumnHeight, playerNumber, playerTime, playerName) {
+  var x = CLOUD_X + COLUMN_SPACE + (COLUMN_WIDTH * playerNumber) + (COLUMN_SPACE * playerNumber);
+  var y = CLOUD_Y + CLOUD_HEIGHT - (GAP * 4 + playerColumnHeight);
+  ctx.fillRect(x, y, COLUMN_WIDTH, playerColumnHeight);
 
   ctx.fillStyle = 'black';
-  ctx.fillText(t, x, y - (GAP));
-  ctx.fillText(p, x, CLOUD_Y + CLOUD_HEIGHT - (GAP * 2));
+  ctx.fillText(playerTime, x, y - (GAP));
+  ctx.fillText(playerName, x, CLOUD_Y + CLOUD_HEIGHT - (GAP * 2));
 };
 window.renderStatistics = function (ctx, players, times) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
@@ -52,9 +54,9 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillStyle = 'rgba(0, 0 , 0, 1)';
   ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + GAP * 3);
   ctx.fillText('Список результатов: ', CLOUD_X + GAP, CLOUD_Y + GAP * 5);
-
+  getRandomColor();
   for (var i = players.length - 1; i >= 0; i--) {
-    ctx.fillStyle = acolors[i];
+    ctx.fillStyle = getRandomColor();
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'red';
     }
