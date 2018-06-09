@@ -11,11 +11,13 @@
     "url": "https://github.com/htmlacademy-javascript/583603-code-and-magick/issues"
   },
   "devDependencies": {
-    "eslint": "4.19.1",
+    "eslint": "^4.19.1",
     "eslint-config-htmlacademy": "0.5.2"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "nmp": "^1.0.3"
+  },
   "scripts": {
     "test": "eslint js/"
   },
