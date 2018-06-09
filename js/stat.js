@@ -40,7 +40,7 @@ var mdrawRect = function (ctx, v, n, t, p) {
   ctx.fillRect(x, y, w, h);
 
   ctx.fillStyle = 'black';
-  ctx.fillText(t, x, y - (GAP ));
+  ctx.fillText(t, x, y - (GAP));
   ctx.fillText(p, x, CLOUD_Y + CLOUD_HEIGHT - (GAP * 2));
 };
 window.renderStatistics = function (ctx, players, times) {
