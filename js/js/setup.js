@@ -2,11 +2,12 @@
 var blockElement = document.querySelector('.setup');
 blockElement.classList.remove('hidden');
 
-var wizardSet = 4;
+var wizardSetLength = 4;
 var wizardNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var wizardSurnames = ['да Марья', 'Верон', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
-var wizartRobes = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
-var wizardEyes = ['black', 'black', 'blue', 'yellow', 'green'];
+var wizartRobes = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)',
+  'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var wizardEyes = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var wizards = [];
 
@@ -15,9 +16,9 @@ var getRandom = function (arr) {
   return makeValue;
 };
 
-for (var i = 0; i < wizardSet; i++) {
+for (var i = 0; i < wizardSetLength; i++) {
   wizards[i] = {
-    name: getRandom(wizardNames) + '' + getRandom(wizardSurnames),
+    name: getRandom(wizardNames) + ' ' + getRandom(wizardSurnames),
     coatColor: getRandom(wizartRobes),
     eyesColor: getRandom(wizardEyes)
   };
@@ -34,4 +35,4 @@ wizards.forEach(function (item) {
 });
 
 var setupSimilar = document.querySelector('.setup-similar');
-setupSimilar.classList.remove('.hidden');
+setupSimilar.classList.remove('hidden');
