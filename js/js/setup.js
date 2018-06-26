@@ -34,10 +34,6 @@ wizards.forEach(function (item) {
   wizardsListElement.appendChild(wizardElement);
 });
 
-
-var setupSimilar = document.querySelector('.setup-similar');
-setupSimilar.classList.remove('hidden');
-
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 var setupBlock = document.querySelector('.setup');
