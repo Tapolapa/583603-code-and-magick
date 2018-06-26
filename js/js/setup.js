@@ -1,6 +1,4 @@
 'use strict';
-var blockElement = document.querySelector('.setup');
-blockElement.classList.remove('hidden');
 
 var wizardSetLength = 4;
 var wizardNames = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
@@ -8,7 +6,7 @@ var wizardSurnames = ['да Марья', 'Верон', 'Вальц', 'Онопк
 var wizartRobes = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)',
   'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var wizardEyes = ['black', 'red', 'blue', 'yellow', 'green'];
-var wizardfireBalls = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var wizardFireballs = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
 var wizards = [];
 
 var getRandom = function (arr) {
@@ -33,6 +31,8 @@ wizards.forEach(function (item) {
   wizardElement.querySelector('.wizard-eyes').style.fill = item.eyesColor;
   wizardsListElement.appendChild(wizardElement);
 });
+var setupSimilar = document.querySelector('.setup-similar');
+setupSimilar.classList.remove('hidden');
 
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
@@ -41,10 +41,6 @@ var setupOpenBlock = document.querySelector('.setup-open');
 var inputUserName = document.querySelector('.setup-user-name');
 var setupCloseButton = document.querySelector('.setup-close');
 var setupOpenIcon = document.querySelector('.setup-open-icon');
-inputUserName.setAttribute('minlength', '2');
-inputUserName.setAttribute('maxLength', '25');
-setupOpenIcon.setAttribute('tabindex', '0');
-setupCloseButton.setAttribute('tabindex', '0');
 
 var openPopup = function () {
   setupBlock.classList.remove('hidden');
@@ -73,8 +69,6 @@ var onPopupEsc = function (evt) {
 };
 
 var setupWizardForm = setupBlock.querySelector('.setup-wizard-form').querySelector('.setup-submit');
-setupWizardForm.setAttribute('url', 'https://js.dump.academy/code-and-magick');
-setupWizardForm.setAttribute('POST', 'multipart/form-data');
 
 inputUserName.addEventListener('invalid', function (evt) {
   if (inputUserName.validity.tooShort) {
@@ -98,11 +92,11 @@ wizardEyesBlock.addEventListener('click', function () {
   var changeEyesColor = getRandom(wizardEyes);
   wizardEyesBlock.style.fill = changeEyesColor;
 });
-var wizardFireBallBlock = document.querySelector('.setup-fireball-wrap');
-var wizardFireBallInput = wizardFireBallBlock.querySelector('input');
-wizardFireBallInput.classList.remove('hidden');
-wizardFireBallBlock.addEventListener('click', function () {
-  var changeFireBall = getRandom(wizardfireBalls);
-  wizardFireBallBlock.style.background = changeFireBall;
-  wizardFireBallInput.value = changeFireBall;
+var wizardFireballBlock = document.querySelector('.setup-fireball-wrap');
+var wizardFireballInput = wizardFireballBlock.querySelector('input');
+wizardFireballInput.classList.remove('hidden');
+wizardFireballBlock.addEventListener('click', function () {
+  var changeFireball = getRandom(wizardFireballs);
+  wizardFireballBlock.style.background = changeFireball;
+  wizardFireballInput.value = changeFireball;
 });
